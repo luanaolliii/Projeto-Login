@@ -1,0 +1,106 @@
+:root {
+    --PeachPuff: rgb(255, 218, 185);
+    --azere: rgb(166, 237, 237);
+    --Thistle: rgb(214, 158, 214);
+    --Lavender: rgb(157, 157, 235);
+}
+
+body { 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: lavender  ;
+}
+
+
+form {
+    border: 3px solid rgb(223, 151, 205);
+    padding: 70px 100px;
+    border-radius: 5px;
+}
+
+.wrapper {
+    position:relative
+}
+
+input {
+    border: none;
+    border-bottom: 1px solid var(--Lavender);
+     background: var(--Thistle);
+     border-radius: 3px;
+     height: 50px;
+     width: 250px;
+     padding-left: 20px;
+     margin-bottom: 20px;
+     color: white;
+}
+
+input:focus {
+    outline: 1px solid var(--Thistle);
+}
+
+input:user-invalid {
+    border-bottom: 1px solid var(red) ;
+}
+
+input:invalid~.wrong,
+input:valid:not(:placeholder-shown)~.correct {
+    display: block;
+    animation: shake .2s 3 ease;
+}
+
+input:invalid:focus {
+    outiline: 1px solid red;
+}
+
+.wrong,
+.correct { 
+    display: none;
+    position: absolute;
+    top: 20px;
+    right: -40px;
+}
+
+button {
+    margin-top: 20px;
+    width: 100%;
+    padding: 15px 30px;
+    background: none;
+    border: 1px solid var(--Thistle);
+    border-radius: 3px;
+    color: var(--Thistle);
+    position: relative;
+    cursor: pointer;
+    font-weight: bold; 
+}
+
+form:has(div:first-child input:valid)>button:hover {
+    background: var(--Lavender);
+}
+
+form:has(div:first-child input:valid)>button:hover::before {
+    content: '';
+    height: 50px;
+    width: 100%;
+    background-color: var(--Lavender);
+    position: absolute;
+    bottom: -60px;
+    left: 0;
+    transform: perspective(50px) rotateX('40deg');
+    filter: blur(30px);
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        top: 50px;
+    }
+
+    50% {
+        top: 25px;
+    }
+}
